@@ -35,6 +35,8 @@ const translations = {
         noImage: '사진을 먼저 업로드해주세요.',
         retryBtn: '다시 분석하기',
         optimizingText: '🔄 이미지 최적화 중...',
+        insightsTitle: '🎤 K-POP Insights',
+        insightsSubtitle: 'K-POP의 역사와 글로벌 성공 비결을 알아보세요',
     },
     en: {
         badge: 'AI Personal Color Diagnosis',
@@ -71,6 +73,8 @@ const translations = {
         noImage: 'Please upload a photo first.',
         retryBtn: 'Analyze Again',
         optimizingText: '🔄 Optimizing image...',
+        insightsTitle: '🎤 K-POP Insights',
+        insightsSubtitle: 'Discover the History and Global Success Secrets of K-POP',
     },
     ja: {
         badge: 'AIパーソナルカラー診断',
@@ -107,6 +111,8 @@ const translations = {
         noImage: '先に写真をアップロードしてください。',
         retryBtn: 'もう一度分析する',
         optimizingText: '🔄 画像を最適化しています...',
+        insightsTitle: '🎤 K-POP Insights',
+        insightsSubtitle: 'K-POPの歴史とグローバル成功の秘訣を知ろう',
     }
 };
 
@@ -153,6 +159,7 @@ function setLanguage(lang) {
         'copy-link': 'copyLink',
         'column-title': 'columnTitle', 'footer-text': 'footerText',
         'retry-btn': 'retryBtn',
+        'insights-title': 'insightsTitle', 'insights-subtitle': 'insightsSubtitle',
     };
     for (const [id, key] of Object.entries(map)) {
         const el = document.getElementById(id);
@@ -171,8 +178,16 @@ function setLanguage(lang) {
     document.querySelectorAll('.column-lang-content').forEach(el => {
         el.style.display = 'none';
     });
+    document.querySelectorAll('.insights-lang-content').forEach(el => {
+        el.style.display = 'none';
+    });
+
     const activeColumn = document.getElementById(`column-${lang}`);
     if (activeColumn) activeColumn.style.display = 'block';
+
+    const activeInsights = document.getElementById(`insights-${lang}`);
+    if (activeInsights) activeInsights.style.display = 'flex'; // Use flex as defined in CSS
+
     document.querySelectorAll('.column-tab').forEach(tab => {
         tab.classList.toggle('active', tab.dataset.lang === lang);
     });

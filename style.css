@@ -779,6 +779,74 @@ body {
     margin-bottom: 14px;
 }
 
+/* ===== K-POP INSIGHTS ===== */
+.insights-section {
+    margin: 60px 0 40px;
+}
+
+.insights-title {
+    font-size: 26px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #ff2d78, #a855f7, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.insights-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.insights-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.insights-article {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: all .3s ease;
+}
+
+.insights-article:hover {
+    border-color: rgba(168, 85, 247, 0.3);
+    box-shadow: 0 4px 24px rgba(168, 85, 247, 0.1);
+    transform: translateY(-2px);
+}
+
+.insights-article h3 {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    line-height: 1.4;
+}
+
+.insights-article p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 2.0;
+    margin-bottom: 16px;
+    word-break: keep-all;
+}
+
+.insights-article p:last-child {
+    margin-bottom: 0;
+}
+
+.insights-article strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 /* ===== FOOTER ===== */
 .footer {
     text-align: center;

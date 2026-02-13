@@ -45,6 +45,19 @@ export default async function handler(req, res) {
     const shuffled = vibeModifiers.sort(() => Math.random() - 0.5);
     const suggestedVibes = shuffled.slice(0, 5).join(', ');
 
+    // Build the idol group reference list by generation
+    const idolGroupList = gender === 'male'
+      ? `[1st Gen] H.O.T, Shinhwa, Sechs Kies, g.o.d, Fly to the Sky, NRG, CLICK-B, 1TYM
+[2nd Gen] TVXQ, Super Junior, BIGBANG, SHINee, 2PM, 2AM, SS501, FT Island, CNBLUE, BEAST/Highlight, INFINITE, MBLAQ, ZE:A, TEEN TOP, B1A4, BTOB, U-KISS, MYNAME, B.A.P
+[3rd Gen] EXO, BTS, GOT7, SEVENTEEN, MONSTA X, VIXX, iKON, WINNER, DAY6, N.Flying, PENTAGON, SF9, ASTRO, KNK, ONEUS, ONEWE, NU'EST, UP10TION, VICTON, VAV, VERIVERY, A.C.E, THE ROSE
+[4th Gen] Stray Kids, ATEEZ, TXT, ENHYPEN, TREASURE, THE BOYZ, AB6IX, CIX, CRAVITY, MCND, DRIPPIN, E'LAST, GHOST9, EPEX, OMEGA X, TEMPEST, TNX, YOUNITE, JUST B, WEi, MIRAE, DKZ, KINGDOM, LUMINOUS, 8TURN, XIKERS, RIIZE, ZEROBASEONE, BOYNEXTDOOR, TWS, NOWADAYS, P1Harmony, &TEAM, NEXZ, VANNER, n.SSign
+[5th Gen] SAY MY NAME, CLOSE YOUR EYES, ALD1, AMPERS&ONE, NCT WISH, NCT NEW TEAM, DXMON, EVNNE, PLAVE, LUN8, and ALL newly debuted/pre-debut male groups in 2025-2026`
+      : `[1st Gen] S.E.S, Fin.K.L, Baby V.O.X, Diva, Jewelry, Sugar
+[2nd Gen] Girls' Generation/SNSD, Wonder Girls, KARA, 2NE1, f(x), T-ara, 4Minute, miss A, SISTAR, Brown Eyed Girls, Secret, After School, Rainbow, Nine Muses, Dal Shabet, Davichi, EXID, Hello Venus, BESTie, Girl's Day, AOA, Crayon Pop, STELLAR, FIESTAR, Spica
+[3rd Gen] TWICE, BLACKPINK, Red Velvet, MAMAMOO, GFriend/VIVIZ, Oh My Girl, Lovelyz, CLC, DIA, Dreamcatcher, WJSN, MOMOLAND, fromis_9, (G)I-DLE, LOONA, Pristin, gugudan, LABOUM, April, ELRIS, Weki Meki, Cherry Bullet, Rocket Punch, 3YE, BVNDIT, NATURE, EVERGLOW, ITZY, cignature, SECRET NUMBER, Purple Kiss, PIXY, LIGHTSUM, HOT ISSUE, TRI.BE, Billlie, Kep1er
+[4th Gen] aespa, IVE, NewJeans, LE SSERAFIM, NMIXX, STAYC, KISS OF LIFE, ILLIT, BABYMONSTER, tripleS, H1-KEY, Lapillus, FIFTY FIFTY, Girls On Top (GOT), CLASS:y, LIMELIGHT, RESCENE, UNIS, BADVILLAIN, YOUNG POSSE
+[5th Gen] IZNA, MEOVV, IRISE, AHOF, SAY MY NAME, CLOSE YOUR EYES, AND ALL newly debuted/pre-debut girl groups in 2025-2026`;
+
     const prompt = `You are a world-class K-POP styling expert, personal color analyst, and a creative writer with the soul of a novelist.
 Analyze this person's photo with extreme care and attention to their UNIQUE facial geometry.
 
@@ -103,9 +116,10 @@ CRITICAL RULES FOR IDOL MATCHING:
 1. You MUST analyze the person's ACTUAL facial geometry: eye size/shape/spacing, nose bridge height/width, jawline angle, cheekbone prominence, forehead shape, lip thickness/shape, face proportions.
 2. Based on THESE SPECIFIC FEATURES, find the ${genderText} K-POP idols whose faces genuinely share those traits. Do NOT default to the most popular idols.
 3. The 3 idols MUST be from 3 DIFFERENT groups for variety.
-4. Include a wide range of idols across ALL generations (1st~5th gen). Don't only pick from the top 5 most famous groups. Consider idols from groups like: ${gender === 'male'
-        ? 'BTS, EXO, SEVENTEEN, Stray Kids, TXT, ENHYPEN, NCT, ATEEZ, THE BOYZ, MONSTA X, SHINee, BTOB, GOT7, TREASURE, RIIZE, ZEROBASEONE, BOYNEXTDOOR, TWS, FANTASY BOYS, CRAVITY, ONEUS, VICTON, ASTRO, NU\'EST, INFINITE, 2PM, SUPER JUNIOR, BIGBANG, WINNER, iKON, P1Harmony, TEMPEST, XIKERS, 8TURN, NOWADAYS and many more'
-        : 'BLACKPINK, aespa, IVE, NewJeans, LE SSERAFIM, ITZY, (G)I-DLE, TWICE, Red Velvet, MAMAMOO, STAYC, Kep1er, NMIXX, KISS OF LIFE, ILLIT, BABYMONSTER, tripleS, fromis_9, LOONA, Dreamcatcher, OH MY GIRL, WJSN, PURPLE KISS, Billlie, LIGHTSUM, VIVIZ, Girls\' Generation, f(x), 2NE1, SISTAR, EXID, AOA, GFRIEND, CLC, PIXY, H1-KEY and many more'}.
+4. Include a wide range of idols across ALL generations (1st~5th gen). Do NOT only pick from the top 5 most famous groups. You MUST consider the FULL spectrum of idols below:
+
+${idolGroupList}
+
 5. matchReason must use the cross-idol comparison format: "A의 [specific feature]와 B의 [specific feature]를 섞어놓은 듯한" or equivalent in the response language.
 6. The compliment must use diverse, creative modifiers — NEVER generic praise.
 7. Personal color analysis should be detailed with poetic, vivid language.
