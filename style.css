@@ -529,8 +529,13 @@ body {
 
 /* CTA Button - MOST PROMINENT */
 .cta-wrapper {
-    margin: 28px 0 24px;
+    margin: 28px 0 4px;
     text-align: center;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 10;
 }
 
 .cta-btn {
@@ -620,19 +625,20 @@ body {
 
 /* ===== SHARE SECTION ===== */
 .share-section {
-    display: flex;
+    display: flex !important;
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 20px 0 40px;
+    margin: 24px 0 12px;
+    padding: 20px 0;
 }
 
 .share-btn {
-    padding: 12px 24px;
+    padding: 14px 28px;
     border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
-    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     color: #fff;
     cursor: pointer;
     transition: all .3s;
@@ -640,20 +646,9 @@ body {
     align-items: center;
     gap: 8px;
     letter-spacing: 0.3px;
-    position: relative;
-    overflow: hidden;
 }
 
-.share-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 25px;
-    padding: 1px;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-}
+
 
 .share-btn:hover {
     transform: translateY(-2px);
@@ -661,6 +656,7 @@ body {
 
 .share-btn.twitter {
     background: linear-gradient(135deg, #1a8cd8, #1da1f2, #4db5f9);
+    border-color: #4db5f9;
     box-shadow: 0 4px 20px rgba(29, 161, 242, 0.3);
 }
 
@@ -670,6 +666,7 @@ body {
 
 .share-btn.save {
     background: linear-gradient(135deg, #ff2d78, #a855f7);
+    border-color: #c77dff;
     box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
 }
 
@@ -679,6 +676,7 @@ body {
 
 .share-btn.copy {
     background: linear-gradient(135deg, #06b6d4, #10b981);
+    border-color: #34d399;
     box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
 }
 
