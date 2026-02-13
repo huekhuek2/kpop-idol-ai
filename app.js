@@ -21,12 +21,14 @@ const translations = {
         featureNose: '코 모양',
         featureLip: '입술 모양',
         featureVibe: '전체 분위기',
-        ctaBtn: '🏥 이 아이돌처럼 되고 싶다면? AI 성형 상담소에서 무료 견적 받기',
+        ctaBtnText: '내 얼굴, 이 아이돌처럼 되려면?',
+        ctaBtnSub: 'AI 성형상담소에서 눈코 상담 받기 →',
         shareTwitter: '𝕏 트위터 공유',
         saveImage: '📷 결과 저장하기',
         copyLink: '🔗 링크 복사',
         copied: '✅ 복사됨!',
-        tweetText: '나랑 닮은 K-POP 아이돌은 {idol}! 당신의 퍼스널 컬러와 닮은꼴 아이돌을 확인해보세요 ✨ #KPOP #아이돌닮은꼴 #퍼스널컬러',
+        tweetText: '나랑 닮은 K-POP 아이돌은 {idol}! 당신의 퍼스널 컬러와 닮은꼴 아이돌을 확인해보세요 ✨ #KPOP #아이돌닮은꼴 #퍼스널컬러 https://kpop-idol-ai.vercel.app/',
+        linkCopied: '✅ 링크가 복사되었습니다!',
         columnTitle: 'K-Beauty 스타일링 가이드',
         footerText: '© 2026 K-POP Idol AI. All rights reserved.',
         errorMsg: '분석 중 오류가 발생했습니다. 다시 시도해주세요.',
@@ -55,12 +57,14 @@ const translations = {
         featureNose: 'Nose Shape',
         featureLip: 'Lip Shape',
         featureVibe: 'Overall Vibe',
-        ctaBtn: '🏥 Want to look like this idol? Get a free AI consultation',
+        ctaBtnText: 'Want to look like this idol?',
+        ctaBtnSub: 'Get a free AI consultation at Beauty AI →',
         shareTwitter: '𝕏 Share on X',
         saveImage: '📷 Save Result',
         copyLink: '🔗 Copy Link',
         copied: '✅ Copied!',
-        tweetText: 'My K-POP idol lookalike is {idol}! Find your personal color and idol match ✨ #KPOP #IdolLookalike #PersonalColor',
+        tweetText: 'My K-POP idol lookalike is {idol}! Find your personal color and idol match ✨ #KPOP #IdolLookalike #PersonalColor https://kpop-idol-ai.vercel.app/',
+        linkCopied: '✅ Link copied!',
         columnTitle: 'K-Beauty Styling Guide',
         footerText: '© 2026 K-POP Idol AI. All rights reserved.',
         errorMsg: 'An error occurred during analysis. Please try again.',
@@ -89,12 +93,14 @@ const translations = {
         featureNose: '鼻の形',
         featureLip: '唇の形',
         featureVibe: '全体の雰囲気',
-        ctaBtn: '🏥 このアイドルのようになりたい？AI美容相談で無料見積もり',
+        ctaBtnText: 'このアイドルのようになりたい？',
+        ctaBtnSub: 'AI美容相談所で目鼻の相談を受ける →',
         shareTwitter: '𝕏 Xでシェア',
         saveImage: '📷 結果を保存',
         copyLink: '🔗 リンクをコピー',
         copied: '✅ コピーしました！',
-        tweetText: '私に似ているK-POPアイドルは{idol}！あなたのパーソナルカラーとそっくりアイドルを確認してみて ✨ #KPOP #アイドルそっくり #パーソナルカラー',
+        tweetText: '私に似ているK-POPアイドルは{idol}！あなたのパーソナルカラーとそっくりアイドルを確認してみて ✨ #KPOP #アイドルそっくり #パーソナルカラー https://kpop-idol-ai.vercel.app/',
+        linkCopied: '✅ リンクをコピーしました！',
         columnTitle: 'K-Beautyスタイリングガイド',
         footerText: '© 2026 K-POP Idol AI. All rights reserved.',
         errorMsg: '分析中にエラーが発生しました。もう一度お試しください。',
@@ -142,7 +148,7 @@ function setLanguage(lang) {
         'feature-face-label': 'featureFace', 'feature-eye-label': 'featureEye',
         'feature-nose-label': 'featureNose', 'feature-lip-label': 'featureLip',
         'feature-vibe-label': 'featureVibe',
-        'cta-btn': 'ctaBtn',
+        'cta-btn-text': 'ctaBtnText', 'cta-btn-sub': 'ctaBtnSub',
         'share-twitter': 'shareTwitter', 'save-image': 'saveImage',
         'copy-link': 'copyLink',
         'column-title': 'columnTitle', 'footer-text': 'footerText',
@@ -265,7 +271,6 @@ function setupAnalyzeButton() {
     btn.addEventListener('click', startAnalysis);
     if (retryBtn) retryBtn.addEventListener('click', () => {
         document.getElementById('result-section').classList.remove('show');
-        document.querySelector('.share-section').style.display = 'none';
         startAnalysis();
     });
 }
@@ -373,7 +378,6 @@ function renderResult(data) {
 
     // Show result
     document.getElementById('result-section').classList.add('show');
-    document.querySelector('.share-section').style.display = 'flex';
     document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // Setup share
@@ -388,8 +392,7 @@ function setupShareButtons(data) {
     // Twitter
     document.getElementById('share-twitter').onclick = () => {
         const text = t.tweetText.replace('{idol}', idolName);
-        const url = encodeURIComponent(window.location.href);
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${url}`, '_blank');
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
     };
 
     // Save Image
@@ -413,16 +416,22 @@ function setupShareButtons(data) {
     // Copy Link
     document.getElementById('copy-link').onclick = async () => {
         try {
-            await navigator.clipboard.writeText(window.location.href);
+            await navigator.clipboard.writeText('https://kpop-idol-ai.vercel.app/');
+            showToast(t.linkCopied);
             const btn = document.getElementById('copy-link');
-            const original = btn.textContent;
-            btn.textContent = t.copied;
             btn.classList.add('copied');
-            setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 2000);
+            setTimeout(() => { btn.classList.remove('copied'); }, 2000);
         } catch (e) {
             console.error('Copy failed:', e);
         }
     };
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
 // ===== COLUMN TABS =====

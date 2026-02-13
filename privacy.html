@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - K-POP Idol AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+            background: #0a0a0f;
+            color: #f0f0f5;
+            min-height: 100vh;
+        }
+
+        .lang-bar {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 16px;
+            background: rgba(10, 10, 15, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(16px);
+        }
+
+        .lang-btn {
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            color: #a0a0b0;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #ff2d78, #a855f7, #3b82f6);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ff2d78, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #a0a0b0;
+            font-size: 13px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #a855f7;
+        }
+
+        .card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 18px 0 8px;
+            color: #06b6d4;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #a0a0b0;
+            margin-bottom: 12px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #a0a0b0;
+            margin-bottom: 6px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #a855f7;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="lang-bar">
+        <button class="lang-btn active" onclick="switchLang('ko')">한국어</button>
+        <button class="lang-btn" onclick="switchLang('en')">English</button>
+        <button class="lang-btn" onclick="switchLang('ja')">日本語</button>
+    </nav>
+    <div class="container">
+
+        <!-- Korean -->
+        <div class="lang-content active" id="lang-ko">
+            <h1>개인정보 처리방침</h1>
+            <p class="subtitle">최종 수정일: 2026년 2월 14일</p>
+            <div class="card">
+                <h2>1. 수집하는 개인정보 항목</h2>
+                <p>K-POP Idol AI(이하 "서비스")는 사용자의 개인정보를 소중히 여기며, 최소한의 정보만을 처리합니다.</p>
+                <ul>
+                    <li><strong>업로드된 사진:</strong> 사용자가 분석을 위해 업로드한 얼굴 사진은 AI 분석 목적으로만 사용됩니다.</li>
+                    <li><strong>기타:</strong> 이름, 이메일, 전화번호 등 별도의 개인정보는 일절 수집하지 않습니다.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>2. 사진 데이터 처리 및 파기</h2>
+                <p>사용자가 업로드한 사진은 <strong>분석 즉시 파기</strong>되며 서버에 저장되지 않습니다. 구체적으로:</p>
+                <ul>
+                    <li>업로드된 사진은 브라우저 메모리에서 AI 분석 API로 전송됩니다.</li>
+                    <li>AI 분석이 완료되면 전송된 이미지 데이터는 즉시 삭제됩니다.</li>
+                    <li>서버에 사진을 저장하거나 데이터베이스에 기록하지 않습니다.</li>
+                    <li>분석 결과 텍스트만 사용자에게 반환되며, 원본 이미지는 보관되지 않습니다.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>3. 개인정보의 제3자 제공</h2>
+                <p>분석을 위한 데이터 전송 외에 어떠한 개인정보도 수집하거나 제3자에게 제공하지 않습니다. AI 분석은 Google Gemini API를 통해 처리되며, Google의 개인정보
+                    처리방침이 적용됩니다.</p>
+            </div>
+            <div class="card">
+                <h2>4. 쿠키 및 추적</h2>
+                <p>본 서비스는 사용자 추적을 위한 쿠키를 사용하지 않습니다. 웹사이트 이용 기록, IP 주소 등의 정보를 별도로 수집하거나 저장하지 않습니다.</p>
+            </div>
+            <div class="card">
+                <h2>5. 문의</h2>
+                <p>개인정보 처리방침에 대한 문의 사항이 있으시면 서비스 운영팀에 연락해 주시기 바랍니다.</p>
+            </div>
+            <a href="index.html" class="back-link">← 메인으로 돌아가기</a>
+        </div>
+
+        <!-- English -->
+        <div class="lang-content" id="lang-en">
+            <h1>Privacy Policy</h1>
+            <p class="subtitle">Last updated: February 14, 2026</p>
+            <div class="card">
+                <h2>1. Information We Collect</h2>
+                <p>K-POP Idol AI ("the Service") values your privacy and processes only the minimum necessary
+                    information.</p>
+                <ul>
+                    <li><strong>Uploaded Photos:</strong> Facial photos uploaded by users are used solely for AI
+                        analysis purposes.</li>
+                    <li><strong>Other Data:</strong> We do not collect any personal information such as names, emails,
+                        or phone numbers.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>2. Photo Data Processing & Deletion</h2>
+                <p>Photos uploaded by users are <strong>immediately destroyed after analysis</strong> and are not stored
+                    on any server. Specifically:</p>
+                <ul>
+                    <li>Uploaded photos are transmitted from browser memory to the AI analysis API.</li>
+                    <li>Once AI analysis is complete, the transmitted image data is immediately deleted.</li>
+                    <li>We do not save photos on servers or record them in any database.</li>
+                    <li>Only the text analysis results are returned to the user; the original image is never retained.
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>3. Third-Party Data Sharing</h2>
+                <p>We do not collect or share any personal information beyond the data transmission required for
+                    analysis. AI analysis is processed through the Google Gemini API, and Google's privacy policy
+                    applies to that processing.</p>
+            </div>
+            <div class="card">
+                <h2>4. Cookies & Tracking</h2>
+                <p>This service does not use cookies for user tracking. We do not separately collect or store
+                    information such as browsing history or IP addresses.</p>
+            </div>
+            <div class="card">
+                <h2>5. Contact</h2>
+                <p>If you have any questions regarding this Privacy Policy, please contact the service operations team.
+                </p>
+            </div>
+            <a href="index.html" class="back-link">← Back to Main Page</a>
+        </div>
+
+        <!-- Japanese -->
+        <div class="lang-content" id="lang-ja">
+            <h1>プライバシーポリシー</h1>
+            <p class="subtitle">最終更新日: 2026年2月14日</p>
+            <div class="card">
+                <h2>1. 収集する個人情報</h2>
+                <p>K-POP Idol AI（以下「本サービス」）はユーザーの個人情報を大切にし、最小限の情報のみを処理します。</p>
+                <ul>
+                    <li><strong>アップロードされた写真：</strong>ユーザーが分析のためにアップロードした顔写真は、AI分析目的でのみ使用されます。</li>
+                    <li><strong>その他：</strong>名前、メールアドレス、電話番号などの個人情報は一切収集しません。</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>2. 写真データの処理と破棄</h2>
+                <p>ユーザーがアップロードした写真は<strong>分析後直ちに破棄</strong>され、サーバーに保存されません。具体的には：</p>
+                <ul>
+                    <li>アップロードされた写真はブラウザメモリからAI分析APIに送信されます。</li>
+                    <li>AI分析が完了すると、送信された画像データは直ちに削除されます。</li>
+                    <li>サーバーに写真を保存したり、データベースに記録することはありません。</li>
+                    <li>テキストの分析結果のみがユーザーに返され、元の画像は保持されません。</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>3. 第三者への情報提供</h2>
+                <p>分析に必要なデータ送信を除き、いかなる個人情報も収集・第三者に提供しません。AI分析はGoogle Gemini APIを通じて処理され、Googleのプライバシーポリシーが適用されます。</p>
+            </div>
+            <div class="card">
+                <h2>4. Cookieおよびトラッキング</h2>
+                <p>本サービスはユーザー追跡のためのCookieを使用しません。閲覧履歴やIPアドレスなどの情報を別途収集・保存することはありません。</p>
+            </div>
+            <div class="card">
+                <h2>5. お問い合わせ</h2>
+                <p>プライバシーポリシーに関するご質問がございましたら、サービス運営チームまでご連絡ください。</p>
+            </div>
+            <a href="index.html" class="back-link">← メインに戻る</a>
+        </div>
+    </div>
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

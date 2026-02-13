@@ -1,190 +1,243 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>K-POP Idol AI - 퍼스널 컬러 진단 & 닮은꼴 아이돌 매칭</title>
-  <meta name="description" content="AI가 분석하는 퍼스널 컬러 진단과 닮은꼴 K-POP 아이돌 매칭. 사진 한 장으로 나만의 스타일을 찾아보세요.">
-  <meta name="keywords" content="퍼스널컬러, K-POP, 아이돌, 닮은꼴, AI진단, 퍼스널컬러진단">
-  <meta property="og:title" content="K-POP Idol AI - 나와 닮은 아이돌은?">
-  <meta property="og:description" content="AI가 분석하는 퍼스널 컬러 진단과 닮은꼴 K-POP 아이돌 매칭">
-  <meta property="og:type" content="website">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-POP Idol AI - 퍼스널 컬러 진단 & 닮은꼴 아이돌 매칭</title>
+    <meta name="description" content="AI가 분석하는 퍼스널 컬러 진단과 닮은꼴 K-POP 아이돌 매칭. 사진 한 장으로 나만의 스타일을 찾아보세요.">
+    <meta name="keywords" content="퍼스널컬러, K-POP, 아이돌, 닮은꼴, AI진단, 퍼스널컬러진단">
+    <meta property="og:title" content="K-POP Idol AI - 나와 닮은 아이돌은?">
+    <meta property="og:description" content="AI가 분석하는 퍼스널 컬러 진단과 닮은꼴 K-POP 아이돌 매칭">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 </head>
+
 <body>
-  <div class="bg-glow"></div>
+    <div class="bg-glow"></div>
 
-  <!-- Language Bar -->
-  <nav class="lang-bar">
-    <button class="lang-btn active" data-lang="ko">한국어</button>
-    <button class="lang-btn" data-lang="en">English</button>
-    <button class="lang-btn" data-lang="ja">日本語</button>
-  </nav>
+    <!-- Language Bar -->
+    <nav class="lang-bar">
+        <button class="lang-btn active" data-lang="ko">한국어</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="ja">日本語</button>
+    </nav>
 
-  <div class="container">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-badge" id="hero-badge">AI 퍼스널 컬러 진단</div>
-      <h1 id="hero-title">나와 닮은 K-POP 아이돌은?</h1>
-      <p id="hero-subtitle">사진 한 장으로 퍼스널 컬러 진단과 닮은꼴 아이돌을 찾아보세요</p>
-    </section>
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-badge" id="hero-badge">AI 퍼스널 컬러 진단</div>
+            <h1 id="hero-title">나와 닮은 K-POP 아이돌은?</h1>
+            <p id="hero-subtitle">사진 한 장으로 퍼스널 컬러 진단과 닮은꼴 아이돌을 찾아보세요</p>
+        </section>
 
-    <!-- Upload -->
-    <div class="upload-section" id="upload-area">
-      <input type="file" id="file-input" accept="image/*" hidden>
-      <div id="upload-placeholder">
-        <div class="upload-icon">📸</div>
-        <div class="upload-text" id="upload-text"><span>사진을 업로드</span>하거나 여기에 끌어놓으세요</div>
-        <div class="upload-text" id="upload-hint" style="margin-top:8px;font-size:12px">JPG, PNG (최대 10MB)</div>
-      </div>
-      <div class="preview-container" id="preview-container">
-        <img id="preview-img" alt="Preview">
-        <button class="preview-remove" id="preview-remove">✕</button>
-      </div>
-    </div>
-
-    <!-- Gender Selector -->
-    <div class="gender-selector">
-      <button class="gender-btn active" data-gender="male" id="male-btn">👨 남자 아이돌</button>
-      <button class="gender-btn" data-gender="female" id="female-btn">👩 여자 아이돌</button>
-    </div>
-
-    <!-- Analyze Button -->
-    <button class="analyze-btn" id="analyze-btn">✨ AI 분석 시작하기</button>
-
-    <!-- Loading -->
-    <div class="loading-section" id="loading-section">
-      <div class="spinner"></div>
-      <div class="loading-text" id="loading-text">AI가 얼굴을 분석하고 있어요...</div>
-    </div>
-
-    <!-- Result -->
-    <div class="result-section" id="result-section">
-      <div class="result-card" id="result-card">
-        <div class="result-card-header">
-          <h2 id="result-title">퍼스널 컬러 진단 결과</h2>
-          <p id="result-subtitle">AI가 분석한 당신의 스타일 리포트</p>
+        <!-- Upload -->
+        <div class="upload-section" id="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <div id="upload-placeholder">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text" id="upload-text"><span>사진을 업로드</span>하거나 여기에 끌어놓으세요</div>
+                <div class="upload-text" id="upload-hint" style="margin-top:8px;font-size:12px">JPG, PNG (최대 10MB)</div>
+            </div>
+            <div class="preview-container" id="preview-container">
+                <img id="preview-img" alt="Preview">
+                <button class="preview-remove" id="preview-remove">✕</button>
+            </div>
         </div>
-        <div class="result-card-body">
-          <!-- Personal Color -->
-          <div class="pc-section">
-            <div class="pc-badge" id="pc-season"></div>
-            <div class="pc-subtype" id="pc-subtype"></div>
-            <div class="pc-desc" id="pc-desc"></div>
-            <div class="palette-label" id="best-colors-label">베스트 컬러</div>
-            <div class="color-palette" id="best-colors"></div>
-            <div class="palette-label" id="avoid-colors-label" style="margin-top:12px">피해야 할 컬러</div>
-            <div class="color-palette" id="avoid-colors"></div>
-          </div>
 
-          <!-- Idol Matches -->
-          <h3 class="section-title" id="idol-title" style="margin-top:24px;font-size:17px">닮은꼴 K-POP 아이돌 TOP 3</h3>
-          <div class="idol-list" id="idol-list"></div>
-
-          <!-- Compliment -->
-          <div class="compliment-box" id="compliment-text"></div>
-
-          <!-- Facial Features -->
-          <div class="features-grid">
-            <div class="feature-item">
-              <div class="feature-label" id="feature-face-label">얼굴형</div>
-              <div id="feature-face-value"></div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-label" id="feature-eye-label">눈 모양</div>
-              <div id="feature-eye-value"></div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-label" id="feature-nose-label">코 모양</div>
-              <div id="feature-nose-value"></div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-label" id="feature-lip-label">입술 모양</div>
-              <div id="feature-lip-value"></div>
-            </div>
-            <div class="feature-item" style="grid-column: 1/-1">
-              <div class="feature-label" id="feature-vibe-label">전체 분위기</div>
-              <div id="feature-vibe-value"></div>
-            </div>
-          </div>
-
-          <!-- CTA -->
-          <a href="https://beauty-ai.vercel.app/" target="_blank" rel="noopener" class="cta-btn" id="cta-btn">
-            🏥 이 아이돌처럼 되고 싶다면? AI 성형 상담소에서 무료 견적 받기
-          </a>
+        <!-- Gender Selector -->
+        <div class="gender-selector">
+            <button class="gender-btn active" data-gender="male" id="male-btn">👨 남자 아이돌</button>
+            <button class="gender-btn" data-gender="female" id="female-btn">👩 여자 아이돌</button>
         </div>
-      </div>
 
-      <!-- Retry -->
-      <button class="analyze-btn" id="retry-btn" style="margin-top:16px">다시 분석하기</button>
+        <!-- Analyze Button -->
+        <button class="analyze-btn" id="analyze-btn">✨ AI 분석 시작하기</button>
+
+        <!-- Loading -->
+        <div class="loading-section" id="loading-section">
+            <div class="spinner"></div>
+            <div class="loading-text" id="loading-text">AI가 얼굴을 분석하고 있어요...</div>
+        </div>
+
+        <!-- Result -->
+        <div class="result-section" id="result-section">
+            <div class="result-card" id="result-card">
+                <div class="result-card-header">
+                    <h2 id="result-title">퍼스널 컬러 진단 결과</h2>
+                    <p id="result-subtitle">AI가 분석한 당신의 스타일 리포트</p>
+                </div>
+                <div class="result-card-body">
+                    <!-- Personal Color -->
+                    <div class="pc-section">
+                        <div class="pc-badge" id="pc-season"></div>
+                        <div class="pc-subtype" id="pc-subtype"></div>
+                        <div class="pc-desc" id="pc-desc"></div>
+                        <div class="palette-label" id="best-colors-label">베스트 컬러</div>
+                        <div class="color-palette" id="best-colors"></div>
+                        <div class="palette-label" id="avoid-colors-label" style="margin-top:12px">피해야 할 컬러</div>
+                        <div class="color-palette" id="avoid-colors"></div>
+                    </div>
+
+                    <!-- Idol Matches -->
+                    <h3 class="section-title" id="idol-title" style="margin-top:24px;font-size:17px">닮은꼴 K-POP 아이돌 TOP 3
+                    </h3>
+                    <div class="idol-list" id="idol-list"></div>
+
+                    <!-- Compliment -->
+                    <div class="compliment-box" id="compliment-text"></div>
+
+                    <!-- Facial Features -->
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-label" id="feature-face-label">얼굴형</div>
+                            <div id="feature-face-value"></div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label" id="feature-eye-label">눈 모양</div>
+                            <div id="feature-eye-value"></div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label" id="feature-nose-label">코 모양</div>
+                            <div id="feature-nose-value"></div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label" id="feature-lip-label">입술 모양</div>
+                            <div id="feature-lip-value"></div>
+                        </div>
+                        <div class="feature-item" style="grid-column: 1/-1">
+                            <div class="feature-label" id="feature-vibe-label">전체 분위기</div>
+                            <div id="feature-vibe-value"></div>
+                        </div>
+                    </div>
+
+                    <!-- CTA (Most Important) -->
+                    <div class="cta-wrapper">
+                        <a href="https://beauty-ai.vercel.app/" target="_blank" rel="noopener" class="cta-btn"
+                            id="cta-btn">
+                            <span class="cta-emoji">💎</span>
+                            <span class="cta-text" id="cta-btn-text">내 얼굴, 이 아이돌처럼 되려면?</span>
+                            <span class="cta-sub" id="cta-btn-sub">AI 성형상담소에서 눈코 상담 받기 →</span>
+                        </a>
+                    </div>
+
+                    <!-- Share Buttons -->
+                    <div class="share-section" id="share-section">
+                        <button class="share-btn twitter" id="share-twitter">𝕏 트위터 공유</button>
+                        <button class="share-btn save" id="save-image">📷 이미지 저장</button>
+                        <button class="share-btn copy" id="copy-link">🔗 링크 복사</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Retry -->
+            <button class="analyze-btn" id="retry-btn" style="margin-top:16px">다시 분석하기</button>
+        </div>
+
+        <!-- Toast -->
+        <div class="toast" id="toast"></div>
+
+        <!-- K-Beauty Column -->
+        <section class="column-section">
+            <h2 class="section-title" id="column-title">K-Beauty 스타일링 가이드</h2>
+            <div class="column-tabs">
+                <button class="column-tab active" data-lang="ko">한국어</button>
+                <button class="column-tab" data-lang="en">English</button>
+                <button class="column-tab" data-lang="ja">日本語</button>
+            </div>
+
+            <!-- Korean Column -->
+            <div class="column-content column-lang-content" id="column-ko">
+                <h3>퍼스널 컬러란 무엇인가요?</h3>
+                <p>퍼스널 컬러는 개인의 타고난 피부 톤, 머리카락 색, 눈동자 색 등을 종합적으로 분석하여 가장 잘 어울리는 색상 팔레트를 찾아주는 컬러 진단법입니다. 1940년대 미국의 색채 이론가
+                    로버트 도어(Robert Dorr)에 의해 처음 체계화되었으며, 이후 캐롤 잭슨(Carole Jackson)의 『Color Me Beautiful』을 통해 전 세계적으로 널리
+                    알려지게 되었습니다.</p>
+                <p>퍼스널 컬러는 크게 봄 웜톤(Spring Warm), 여름 쿨톤(Summer Cool), 가을 웜톤(Autumn Warm), 겨울 쿨톤(Winter Cool)의 네 가지 시즌으로
+                    나뉩니다. 봄 웜톤은 밝고 따뜻한 색감이 특징이며 복숭아, 코랄, 밝은 오렌지 계열이 잘 어울립니다. 여름 쿨톤은 부드럽고 차가운 색감으로 라벤더, 로즈, 파스텔 블루 등이 잘
+                    맞습니다. 가을 웜톤은 깊고 풍성한 따뜻한 색조로 머스타드, 테라코타, 올리브 그린이 잘 어울리며, 겨울 쿨톤은 선명하고 대비가 강한 색상으로 순백, 체리 레드, 로열 블루 등이
+                    가장 잘 맞습니다.</p>
+                <h3>얼굴형별 K-POP 스타일링 팁</h3>
+                <p>K-POP 아이돌들의 스타일링 비결은 자신의 얼굴형에 맞는 최적의 헤어스타일과 메이크업을 찾는 것에서 시작됩니다. 둥근 얼굴형은 이마를 드러내는 센터 파트나 볼륨감 있는 탑 헤어로
+                    얼굴을 길어 보이게 하는 것이 효과적입니다. 계란형 얼굴은 거의 모든 스타일이 잘 어울리지만, 특히 자연스러운 웨이브나 사이드 파트가 세련미를 더해줍니다.</p>
+                <p>각진 얼굴형(사각턱)은 턱선 주변에 레이어드 커트를 넣어 부드러운 느낌을 주고, 볼터치를 둥글게 넣어 얼굴의 각을 완화하는 것이 좋습니다. 긴 얼굴형은 앞머리(뱅)를 활용하여 이마를
+                    가리면 얼굴 비율이 한층 좋아 보이며, 사이드에 볼륨을 주어 가로 방향으로의 시각적 효과를 만들어 줍니다. 하트형 얼굴은 턱 부분이 좁아지는 특징이 있어 턱 라인에 볼륨감을 주는
+                    보브컷이나 레이어드 스타일이 잘 어울립니다.</p>
+                <h3>퍼스널 컬러에 맞는 메이크업 비법</h3>
+                <p>봄 웜톤이라면 코랄 핑크 립스틱과 골드 톤 아이섀도우로 화사하고 생기 넘치는 메이크업을 추천합니다. 피치 블러셔와 오렌지 베이스의 파운데이션으로 자연스러운 윤기를 더하세요. 여름
+                    쿨톤은 로즈 핑크 립과 라벤더 톤의 아이섀도우가 잘 어울리며, 은은한 실버 하이라이터로 투명한 느낌을 연출할 수 있습니다.</p>
+                <p>가을 웜톤은 브릭 레드나 테라코타 립, 브라운 계열 아이섀도우로 깊이 있는 분위기를 만들 수 있으며, 골드 하이라이터와 따뜻한 톤의 블러셔가 포인트입니다. 겨울 쿨톤은 체리 레드나
+                    딥 와인 립스틱, 블랙과 그레이의 스모키 아이로 강렬하면서도 세련된 인상을 줄 수 있습니다. 선명한 핑크 블러셔와 실버 하이라이터를 조합하면 겨울 쿨톤 특유의 시크한 매력을
+                    극대화할 수 있습니다.</p>
+            </div>
+
+            <!-- English Column -->
+            <div class="column-content column-lang-content" id="column-en" style="display:none">
+                <h3>What is Personal Color Analysis?</h3>
+                <p>Personal color analysis is a method of identifying the most flattering color palette for an
+                    individual by comprehensively analyzing their natural skin tone, hair color, and eye color. It was
+                    first systematized in the 1940s by American color theorist Robert Dorr and later popularized
+                    worldwide through Carole Jackson's book "Color Me Beautiful."</p>
+                <p>Personal colors are broadly divided into four seasons: Spring Warm, Summer Cool, Autumn Warm, and
+                    Winter Cool. Spring Warm is characterized by bright, warm tones — peach, coral, and light orange
+                    hues work best. Summer Cool features soft, cool tones where lavender, rose, and pastel blue are
+                    ideal. Autumn Warm embraces deep, rich warm shades like mustard, terracotta, and olive green. Winter
+                    Cool thrives with vivid, high-contrast colors such as pure white, cherry red, and royal blue.</p>
+                <h3>K-POP Styling Tips by Face Shape</h3>
+                <p>The styling secrets of K-POP idols begin with finding the perfect hairstyle and makeup for your face
+                    shape. Round faces benefit from center parts that expose the forehead or voluminous top hair to
+                    create a lengthening effect. Oval faces suit almost any style, though natural waves and side parts
+                    add extra sophistication and elegance.</p>
+                <p>Square jaw face shapes can be softened with layered cuts around the jawline and rounded blush
+                    application. Long face shapes look best with bangs that cover the forehead to improve facial
+                    proportions, along with added side volume for a horizontal visual effect. Heart-shaped faces, which
+                    narrow at the chin, pair beautifully with bob cuts or layered styles that add volume at the jawline.
+                    These principles are consistently applied by top K-POP stylists to create the iconic looks we see on
+                    stage and in music videos.</p>
+                <h3>Makeup Secrets for Your Personal Color</h3>
+                <p>If you're a Spring Warm type, try coral pink lipstick with gold-toned eyeshadow for a bright, lively
+                    look. Add peach blusher and an orange-based foundation for natural luminosity. Summer Cool types
+                    look stunning with rose pink lips and lavender-toned eyeshadow, complemented by a subtle silver
+                    highlighter for a translucent finish.</p>
+                <p>Autumn Warm types can create depth with brick red or terracotta lips paired with brown eyeshadow,
+                    accented with gold highlighter and warm-toned blusher. Winter Cool types make a striking impression
+                    with cherry red or deep wine lipstick, combined with black and gray smoky eyes. Pairing vivid pink
+                    blusher with silver highlighter maximizes the chic allure unique to Winter Cool tones. These
+                    techniques are widely used in K-POP idol styling, and understanding your personal color can
+                    transform your everyday beauty routine into something truly extraordinary.</p>
+            </div>
+
+            <!-- Japanese Column -->
+            <div class="column-content column-lang-content" id="column-ja" style="display:none">
+                <h3>パーソナルカラーとは？</h3>
+                <p>パーソナルカラーとは、生まれ持った肌の色、髪の色、瞳の色を総合的に分析し、最も似合うカラーパレットを見つけるカラー診断法です。1940年代にアメリカの色彩理論家ロバート・ドアによって初めて体系化され、その後キャロル・ジャクソンの著書『Color
+                    Me Beautiful』によって世界中に広く知られるようになりました。</p>
+                <p>パーソナルカラーは大きく、スプリングウォーム（春ウォーム）、サマークール（夏クール）、オータムウォーム（秋ウォーム）、ウィンタークール（冬クール）の4つのシーズンに分けられます。スプリングウォームは明るく温かい色味が特徴で、ピーチ、コーラル、明るいオレンジ系がよく似合います。サマークールは柔らかく冷たい色味で、ラベンダー、ローズ、パステルブルーなどがぴったりです。オータムウォームは深く豊かな暖色系で、マスタード、テラコッタ、オリーブグリーンが似合い、ウィンタークールは鮮やかでコントラストの強い色で、ピュアホワイト、チェリーレッド、ロイヤルブルーなどが最適です。
+                </p>
+                <h3>顔型別K-POPスタイリングのコツ</h3>
+                <p>K-POPアイドルのスタイリングの秘訣は、自分の顔型に合った最適なヘアスタイルとメイクアップを見つけることから始まります。丸い顔型は額を出すセンターパートやトップにボリュームを持たせることで、顔を長く見せる効果があります。卵型の顔はほとんどのスタイルが似合いますが、特に自然なウェーブやサイドパートが洗練された印象を与えます。
+                </p>
+                <p>角ばった顔型（エラ張り）は、顎のラインにレイヤードカットを入れることで柔らかい印象になり、チークを丸く入れることで角を和らげることができます。面長の顔型は前髪（バング）を活用して額を隠すことで顔の比率がよく見え、サイドにボリュームを出すことで横方向の視覚効果を作り出します。ハート型の顔は顎の部分が狭くなる特徴があるため、顎のラインにボリュームを出すボブカットやレイヤードスタイルがよく似合います。
+                </p>
+                <h3>パーソナルカラーに合ったメイクアップの秘訣</h3>
+                <p>スプリングウォームタイプなら、コーラルピンクのリップスティックとゴールド系のアイシャドウで華やかで生き生きとしたメイクがおすすめです。ピーチブラッシャーとオレンジベースのファンデーションで自然なツヤを加えましょう。サマークールはローズピンクのリップとラベンダートーンのアイシャドウが似合い、さりげないシルバーハイライターで透明感を演出できます。
+                </p>
+                <p>オータムウォームタイプは、ブリックレッドやテラコッタのリップ、ブラウン系のアイシャドウで深みのある雰囲気を作ることができ、ゴールドハイライターと暖かいトーンのブラッシャーがポイントです。ウィンタークールタイプは、チェリーレッドやディープワインのリップスティック、ブラックとグレーのスモーキーアイで印象的かつ洗練された印象を与えることができます。鮮やかなピンクブラッシャーとシルバーハイライターを組み合わせることで、ウィンタークール特有のシックな魅力を最大限に引き出すことができます。これらのテクニックはK-POPアイドルのスタイリングで広く使われており、自分のパーソナルカラーを理解することで日常のビューティルーティンを特別なものに変えることができます。
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p id="footer-text">© 2026 K-POP Idol AI. All rights reserved.</p>
+            <p style="margin-top:8px">
+                <a href="privacy.html" target="_blank">Privacy Policy</a> · <a href="terms.html" target="_blank">Terms
+                    of Service</a>
+            </p>
+        </footer>
     </div>
 
-    <!-- Share -->
-    <div class="share-section" style="display:none">
-      <button class="share-btn twitter" id="share-twitter">𝕏 트위터 공유</button>
-      <button class="share-btn" id="save-image">📷 결과 저장하기</button>
-      <button class="share-btn" id="copy-link">🔗 링크 복사</button>
-    </div>
-
-    <!-- K-Beauty Column -->
-    <section class="column-section">
-      <h2 class="section-title" id="column-title">K-Beauty 스타일링 가이드</h2>
-      <div class="column-tabs">
-        <button class="column-tab active" data-lang="ko">한국어</button>
-        <button class="column-tab" data-lang="en">English</button>
-        <button class="column-tab" data-lang="ja">日本語</button>
-      </div>
-
-      <!-- Korean Column -->
-      <div class="column-content column-lang-content" id="column-ko">
-        <h3>퍼스널 컬러란 무엇인가요?</h3>
-        <p>퍼스널 컬러는 개인의 타고난 피부 톤, 머리카락 색, 눈동자 색 등을 종합적으로 분석하여 가장 잘 어울리는 색상 팔레트를 찾아주는 컬러 진단법입니다. 1940년대 미국의 색채 이론가 로버트 도어(Robert Dorr)에 의해 처음 체계화되었으며, 이후 캐롤 잭슨(Carole Jackson)의 『Color Me Beautiful』을 통해 전 세계적으로 널리 알려지게 되었습니다.</p>
-        <p>퍼스널 컬러는 크게 봄 웜톤(Spring Warm), 여름 쿨톤(Summer Cool), 가을 웜톤(Autumn Warm), 겨울 쿨톤(Winter Cool)의 네 가지 시즌으로 나뉩니다. 봄 웜톤은 밝고 따뜻한 색감이 특징이며 복숭아, 코랄, 밝은 오렌지 계열이 잘 어울립니다. 여름 쿨톤은 부드럽고 차가운 색감으로 라벤더, 로즈, 파스텔 블루 등이 잘 맞습니다. 가을 웜톤은 깊고 풍성한 따뜻한 색조로 머스타드, 테라코타, 올리브 그린이 잘 어울리며, 겨울 쿨톤은 선명하고 대비가 강한 색상으로 순백, 체리 레드, 로열 블루 등이 가장 잘 맞습니다.</p>
-        <h3>얼굴형별 K-POP 스타일링 팁</h3>
-        <p>K-POP 아이돌들의 스타일링 비결은 자신의 얼굴형에 맞는 최적의 헤어스타일과 메이크업을 찾는 것에서 시작됩니다. 둥근 얼굴형은 이마를 드러내는 센터 파트나 볼륨감 있는 탑 헤어로 얼굴을 길어 보이게 하는 것이 효과적입니다. 계란형 얼굴은 거의 모든 스타일이 잘 어울리지만, 특히 자연스러운 웨이브나 사이드 파트가 세련미를 더해줍니다.</p>
-        <p>각진 얼굴형(사각턱)은 턱선 주변에 레이어드 커트를 넣어 부드러운 느낌을 주고, 볼터치를 둥글게 넣어 얼굴의 각을 완화하는 것이 좋습니다. 긴 얼굴형은 앞머리(뱅)를 활용하여 이마를 가리면 얼굴 비율이 한층 좋아 보이며, 사이드에 볼륨을 주어 가로 방향으로의 시각적 효과를 만들어 줍니다. 하트형 얼굴은 턱 부분이 좁아지는 특징이 있어 턱 라인에 볼륨감을 주는 보브컷이나 레이어드 스타일이 잘 어울립니다.</p>
-        <h3>퍼스널 컬러에 맞는 메이크업 비법</h3>
-        <p>봄 웜톤이라면 코랄 핑크 립스틱과 골드 톤 아이섀도우로 화사하고 생기 넘치는 메이크업을 추천합니다. 피치 블러셔와 오렌지 베이스의 파운데이션으로 자연스러운 윤기를 더하세요. 여름 쿨톤은 로즈 핑크 립과 라벤더 톤의 아이섀도우가 잘 어울리며, 은은한 실버 하이라이터로 투명한 느낌을 연출할 수 있습니다.</p>
-        <p>가을 웜톤은 브릭 레드나 테라코타 립, 브라운 계열 아이섀도우로 깊이 있는 분위기를 만들 수 있으며, 골드 하이라이터와 따뜻한 톤의 블러셔가 포인트입니다. 겨울 쿨톤은 체리 레드나 딥 와인 립스틱, 블랙과 그레이의 스모키 아이로 강렬하면서도 세련된 인상을 줄 수 있습니다. 선명한 핑크 블러셔와 실버 하이라이터를 조합하면 겨울 쿨톤 특유의 시크한 매력을 극대화할 수 있습니다.</p>
-      </div>
-
-      <!-- English Column -->
-      <div class="column-content column-lang-content" id="column-en" style="display:none">
-        <h3>What is Personal Color Analysis?</h3>
-        <p>Personal color analysis is a method of identifying the most flattering color palette for an individual by comprehensively analyzing their natural skin tone, hair color, and eye color. It was first systematized in the 1940s by American color theorist Robert Dorr and later popularized worldwide through Carole Jackson's book "Color Me Beautiful."</p>
-        <p>Personal colors are broadly divided into four seasons: Spring Warm, Summer Cool, Autumn Warm, and Winter Cool. Spring Warm is characterized by bright, warm tones — peach, coral, and light orange hues work best. Summer Cool features soft, cool tones where lavender, rose, and pastel blue are ideal. Autumn Warm embraces deep, rich warm shades like mustard, terracotta, and olive green. Winter Cool thrives with vivid, high-contrast colors such as pure white, cherry red, and royal blue.</p>
-        <h3>K-POP Styling Tips by Face Shape</h3>
-        <p>The styling secrets of K-POP idols begin with finding the perfect hairstyle and makeup for your face shape. Round faces benefit from center parts that expose the forehead or voluminous top hair to create a lengthening effect. Oval faces suit almost any style, though natural waves and side parts add extra sophistication and elegance.</p>
-        <p>Square jaw face shapes can be softened with layered cuts around the jawline and rounded blush application. Long face shapes look best with bangs that cover the forehead to improve facial proportions, along with added side volume for a horizontal visual effect. Heart-shaped faces, which narrow at the chin, pair beautifully with bob cuts or layered styles that add volume at the jawline. These principles are consistently applied by top K-POP stylists to create the iconic looks we see on stage and in music videos.</p>
-        <h3>Makeup Secrets for Your Personal Color</h3>
-        <p>If you're a Spring Warm type, try coral pink lipstick with gold-toned eyeshadow for a bright, lively look. Add peach blusher and an orange-based foundation for natural luminosity. Summer Cool types look stunning with rose pink lips and lavender-toned eyeshadow, complemented by a subtle silver highlighter for a translucent finish.</p>
-        <p>Autumn Warm types can create depth with brick red or terracotta lips paired with brown eyeshadow, accented with gold highlighter and warm-toned blusher. Winter Cool types make a striking impression with cherry red or deep wine lipstick, combined with black and gray smoky eyes. Pairing vivid pink blusher with silver highlighter maximizes the chic allure unique to Winter Cool tones. These techniques are widely used in K-POP idol styling, and understanding your personal color can transform your everyday beauty routine into something truly extraordinary.</p>
-      </div>
-
-      <!-- Japanese Column -->
-      <div class="column-content column-lang-content" id="column-ja" style="display:none">
-        <h3>パーソナルカラーとは？</h3>
-        <p>パーソナルカラーとは、生まれ持った肌の色、髪の色、瞳の色を総合的に分析し、最も似合うカラーパレットを見つけるカラー診断法です。1940年代にアメリカの色彩理論家ロバート・ドアによって初めて体系化され、その後キャロル・ジャクソンの著書『Color Me Beautiful』によって世界中に広く知られるようになりました。</p>
-        <p>パーソナルカラーは大きく、スプリングウォーム（春ウォーム）、サマークール（夏クール）、オータムウォーム（秋ウォーム）、ウィンタークール（冬クール）の4つのシーズンに分けられます。スプリングウォームは明るく温かい色味が特徴で、ピーチ、コーラル、明るいオレンジ系がよく似合います。サマークールは柔らかく冷たい色味で、ラベンダー、ローズ、パステルブルーなどがぴったりです。オータムウォームは深く豊かな暖色系で、マスタード、テラコッタ、オリーブグリーンが似合い、ウィンタークールは鮮やかでコントラストの強い色で、ピュアホワイト、チェリーレッド、ロイヤルブルーなどが最適です。</p>
-        <h3>顔型別K-POPスタイリングのコツ</h3>
-        <p>K-POPアイドルのスタイリングの秘訣は、自分の顔型に合った最適なヘアスタイルとメイクアップを見つけることから始まります。丸い顔型は額を出すセンターパートやトップにボリュームを持たせることで、顔を長く見せる効果があります。卵型の顔はほとんどのスタイルが似合いますが、特に自然なウェーブやサイドパートが洗練された印象を与えます。</p>
-        <p>角ばった顔型（エラ張り）は、顎のラインにレイヤードカットを入れることで柔らかい印象になり、チークを丸く入れることで角を和らげることができます。面長の顔型は前髪（バング）を活用して額を隠すことで顔の比率がよく見え、サイドにボリュームを出すことで横方向の視覚効果を作り出します。ハート型の顔は顎の部分が狭くなる特徴があるため、顎のラインにボリュームを出すボブカットやレイヤードスタイルがよく似合います。</p>
-        <h3>パーソナルカラーに合ったメイクアップの秘訣</h3>
-        <p>スプリングウォームタイプなら、コーラルピンクのリップスティックとゴールド系のアイシャドウで華やかで生き生きとしたメイクがおすすめです。ピーチブラッシャーとオレンジベースのファンデーションで自然なツヤを加えましょう。サマークールはローズピンクのリップとラベンダートーンのアイシャドウが似合い、さりげないシルバーハイライターで透明感を演出できます。</p>
-        <p>オータムウォームタイプは、ブリックレッドやテラコッタのリップ、ブラウン系のアイシャドウで深みのある雰囲気を作ることができ、ゴールドハイライターと暖かいトーンのブラッシャーがポイントです。ウィンタークールタイプは、チェリーレッドやディープワインのリップスティック、ブラックとグレーのスモーキーアイで印象的かつ洗練された印象を与えることができます。鮮やかなピンクブラッシャーとシルバーハイライターを組み合わせることで、ウィンタークール特有のシックな魅力を最大限に引き出すことができます。これらのテクニックはK-POPアイドルのスタイリングで広く使われており、自分のパーソナルカラーを理解することで日常のビューティルーティンを特別なものに変えることができます。</p>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p id="footer-text">© 2026 K-POP Idol AI. All rights reserved.</p>
-      <p style="margin-top:8px">
-        <a href="privacy.html" target="_blank">Privacy Policy</a> · <a href="terms.html" target="_blank">Terms of Service</a>
-      </p>
-    </footer>
-  </div>
-
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
