@@ -31,9 +31,33 @@ export default async function handler(req, res) {
         ? 'Respond entirely in Japanese.'
         : 'Respond entirely in Korean.';
 
-    const prompt = `You are a K-POP styling expert and personal color analyst. Analyze this person's photo carefully.
+    // Timestamp seed to prevent repetitive/cached responses
+    const seed = Date.now();
+
+    // Concept modifier pools for diversity
+    const vibeModifiers = [
+      '청량한', '치명적인', '힙한', '우아한', '만찢남 같은', '만찢녀 같은',
+      '몽환적인', '도발적인', '순수한', '카리스마 넘치는', '섹시한', '큐트한',
+      '신비로운', '도시적인', '자연스러운', '빈티지한', '미래적인', '고전적인',
+      '댄디한', '보이시한', '걸크러시한', '이지적인', '섬세한', '대담한'
+    ];
+    // Pick 5 random modifiers to suggest this session
+    const shuffled = vibeModifiers.sort(() => Math.random() - 0.5);
+    const suggestedVibes = shuffled.slice(0, 5).join(', ');
+
+    const prompt = `You are a world-class K-POP styling expert, personal color analyst, and a creative writer with the soul of a novelist.
+Analyze this person's photo with extreme care and attention to their UNIQUE facial geometry.
+
+CREATIVE SESSION SEED: ${seed}
+Use this seed to ensure your response is completely unique and different from any previous analysis.
 
 ${langInstruction}
+
+WRITING STYLE INSTRUCTIONS:
+- Write the analysis results like a novelist — use rich, vivid metaphors and poetic language that changes EVERY time.
+- For this session, lean into these concept vibes: ${suggestedVibes}
+- NEVER use generic, template-like phrases. Each description must feel freshly crafted and surprising.
+- Mix and vary your sentence structures: sometimes short and punchy, sometimes flowing and lyrical.
 
 Analyze the following and return ONLY a valid JSON object (no markdown, no code fences):
 
@@ -41,46 +65,51 @@ Analyze the following and return ONLY a valid JSON object (no markdown, no code 
   "personalColor": {
     "season": "one of: Spring Warm, Summer Cool, Autumn Warm, Winter Cool (봄 웜톤, 여름 쿨톤, 가을 웜톤, 겨울 쿨톤)",
     "subtype": "specific subtype like Bright Spring, Muted Summer, Deep Autumn, True Winter etc.",
-    "description": "2-3 sentences describing their skin undertone, best colors, and colors to avoid",
+    "description": "2-3 sentences with novelist-quality prose describing their skin undertone, best colors, and colors to avoid. Use vivid metaphors (e.g., 'autumn sunset glow', 'moonlit ivory'). NEVER repeat the same description twice.",
     "bestColors": ["array of 6 hex color codes that suit them best"],
     "avoidColors": ["array of 3 hex color codes to avoid"]
   },
   "idolMatches": [
     {
-      "name": "Real ${genderText} K-POP idol name (must be a well-known, real idol)",
+      "name": "Real ${genderText} K-POP idol whose ACTUAL facial features match this person",
       "group": "Their group name",
-      "matchReason": "Specific facial feature similarity (e.g., eye shape, jawline, nose bridge)",
-      "matchPercentage": 85
+      "matchReason": "MUST describe specific cross-feature comparison. Example format: 'OO의 날카로운 눈매와 △△의 부드러운 분위기를 절묘하게 섞어놓은 듯한 인상' or 'Has the sharp jawline reminiscent of XX combined with the gentle eye corners of YY'",
+      "matchPercentage": "number between 70-95, varied realistically"
     },
     {
-      "name": "Second ${genderText} K-POP idol",
+      "name": "Second ${genderText} K-POP idol (MUST be from a DIFFERENT group)",
       "group": "Their group name",
-      "matchReason": "Specific facial feature similarity",
-      "matchPercentage": 78
+      "matchReason": "Different feature-focused comparison with cross-idol references",
+      "matchPercentage": "number between 65-88"
     },
     {
-      "name": "Third ${genderText} K-POP idol",
+      "name": "Third ${genderText} K-POP idol (MUST be from a DIFFERENT group)",
       "group": "Their group name",
-      "matchReason": "Specific facial feature similarity",
-      "matchPercentage": 72
+      "matchReason": "Different feature-focused comparison with cross-idol references",
+      "matchPercentage": "number between 60-82"
     }
   ],
-  "compliment": "A creative, flattering compliment combining features from the matched idols. Format: Your face combines [idol1]'s [feature] with [idol2]'s [feature] and [idol3]'s [feature]. Make it poetic and flattering. Must be different and unique each time. Use varied sentence structures and metaphors.",
+  "compliment": "A novelist-quality, creative compliment. Combine features from the matched idols with rich modifiers like '${suggestedVibes}' etc. Example: '[idol1]의 깊은 눈빛 속에 [idol2]의 청량한 미소가 공존하는, 마치 봄날의 첫 바람 같은 얼굴' — but create something COMPLETELY NEW and DIFFERENT each time. Never use the same structure twice.",
   "facialFeatures": {
-    "faceShape": "face shape description",
-    "eyeShape": "eye shape description",
-    "noseShape": "nose shape description",
-    "lipShape": "lip shape description",
-    "overallVibe": "overall impression/vibe"
+    "faceShape": "detailed face shape with creative descriptor",
+    "eyeShape": "detailed eye shape with artistic comparison",
+    "noseShape": "detailed nose description",
+    "lipShape": "detailed lip description",
+    "overallVibe": "overall impression using one of these concept vibes or similar: 청량한, 치명적인, 힙한, 우아한, 만찢남/녀, 몽환적인, 카리스마, 순수한, 도시적인, 신비로운 — pick the one that TRULY fits this person"
   }
 }
 
-IMPORTANT RULES:
-1. Only recommend REAL, well-known ${genderText} K-POP idols. Make sure the 3 idols are from different groups for variety.
-2. The compliment must be creative, unique, and flattering - never generic. Use varied metaphors and sentence structures.
-3. Be specific about facial feature similarities - don't be vague.
-4. Personal color analysis should be detailed and accurate based on visible skin tone.
-5. Return ONLY the JSON object, no other text.`;
+CRITICAL RULES FOR IDOL MATCHING:
+1. You MUST analyze the person's ACTUAL facial geometry: eye size/shape/spacing, nose bridge height/width, jawline angle, cheekbone prominence, forehead shape, lip thickness/shape, face proportions.
+2. Based on THESE SPECIFIC FEATURES, find the ${genderText} K-POP idols whose faces genuinely share those traits. Do NOT default to the most popular idols.
+3. The 3 idols MUST be from 3 DIFFERENT groups for variety.
+4. Include a wide range of idols across ALL generations (1st~5th gen). Don't only pick from the top 5 most famous groups. Consider idols from groups like: ${gender === 'male'
+        ? 'BTS, EXO, SEVENTEEN, Stray Kids, TXT, ENHYPEN, NCT, ATEEZ, THE BOYZ, MONSTA X, SHINee, BTOB, GOT7, TREASURE, RIIZE, ZEROBASEONE, BOYNEXTDOOR, TWS, FANTASY BOYS, CRAVITY, ONEUS, VICTON, ASTRO, NU\'EST, INFINITE, 2PM, SUPER JUNIOR, BIGBANG, WINNER, iKON, P1Harmony, TEMPEST, XIKERS, 8TURN, NOWADAYS and many more'
+        : 'BLACKPINK, aespa, IVE, NewJeans, LE SSERAFIM, ITZY, (G)I-DLE, TWICE, Red Velvet, MAMAMOO, STAYC, Kep1er, NMIXX, KISS OF LIFE, ILLIT, BABYMONSTER, tripleS, fromis_9, LOONA, Dreamcatcher, OH MY GIRL, WJSN, PURPLE KISS, Billlie, LIGHTSUM, VIVIZ, Girls\' Generation, f(x), 2NE1, SISTAR, EXID, AOA, GFRIEND, CLC, PIXY, H1-KEY and many more'}.
+5. matchReason must use the cross-idol comparison format: "A의 [specific feature]와 B의 [specific feature]를 섞어놓은 듯한" or equivalent in the response language.
+6. The compliment must use diverse, creative modifiers — NEVER generic praise.
+7. Personal color analysis should be detailed with poetic, vivid language.
+8. Return ONLY the JSON object, no other text.`;
 
     // Base64 image data - remove the data URL prefix if present
     const base64Data = image.includes(',') ? image.split(',')[1] : image;
@@ -104,9 +133,9 @@ IMPORTANT RULES:
           ]
         }],
         generationConfig: {
-          temperature: 0.9,
+          temperature: 0.95,
           topP: 0.95,
-          topK: 40,
+          topK: 50,
           maxOutputTokens: 2048,
         }
       })
