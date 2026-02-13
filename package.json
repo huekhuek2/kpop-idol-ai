@@ -1,0 +1,8 @@
+{
+  "name": "kpop-idol-ai",
+  "version": "1.0.0",
+  "description": "K-POP Idol AI - Personal Color & Lookalike Diagnosis",
+  "scripts": {
+    "dev": "npx serve ."
+  }
+}
