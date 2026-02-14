@@ -90,3 +90,74 @@ export function InsightsSection({ lang, translations }: StaticSectionProps) {
         </section>
     );
 }
+
+export function DetailedSEOContent({ lang }: { lang: string }) {
+    if (lang !== 'ko') return null; // We'll focus Korean for AdSense text volume as requested
+
+    return (
+        <section className="my-20 space-y-12 animate-fade-in-up">
+            <div className="bg-bg-card border border-glass-border rounded-2xl p-8 md:p-12 shadow-neon-glow">
+                <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-main mb-8">
+                    AI K-POP 아이돌상 테스트의 과학적 원리
+                </h2>
+                <div className="space-y-6 text-text-secondary leading-loose text-base md:text-lg">
+                    <p>
+                        본 서비스의 <strong>AI 아이돌상 테스트</strong>는 최신 딥러닝 알고리즘과 컴퓨터 비전 기술을 기반으로 작동합니다. 사용자가 이미지를 업로드하면, 우리 AI 시스템은 즉각적으로 얼굴의 수천 가지 특징점을 분석합니다. 이를 '랜드마크 검출(Landmark Detection)'이라고 하며, 눈의 가로세로 비율, 코의 각도, 입술의 두께, 그리고 턱선부터 이마까지 이어지는 전반적인 얼굴형인 '황금 비율'을 정밀하게 측정합니다.
+                    </p>
+                    <p>
+                        이렇게 수집된 데이터는 실제 활동 중인 수천 명의 K-POP 아이돌 데이터베이스와 대조됩니다. 단순히 눈매가 닮은 것을 넘어, 이미지 인식을 통해 얼굴의 골격 구조, 근육의 분포, 그리고 표정에서 나타나는 분위기(Vibe)까지 수치화하여 가장 유사한 아이돌을 찾아냅니다. 이는 단순한 재미를 넘어, 예술적 조화와 기술적 분석이 결합된 고도의 분석 엔진입니다.
+                    </p>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-bg-card border border-glass-border rounded-2xl p-8">
+                    <h3 className="text-xl font-bold text-accent-cyan mb-4">퍼스널 컬러별 특징 및 스타일링</h3>
+                    <div className="space-y-4 text-sm text-text-secondary leading-relaxed">
+                        <p><strong>봄 웜톤 (Spring Warm):</strong> 화사하고 생기 넘치는 노란색 베이스의 피부톤이 특징입니다. 아이유나 수지처럼 선명하고 밝은 코랄, 복숭아 빛이 잘 어울리며 골드 액세서리로 포인트를 주면 얼굴의 혈색이 더욱 살아납니다.</p>
+                        <p><strong>여름 쿨톤 (Summer Cool):</strong> 맑고 깨끗하며 핑크빛이 도는 피부톤입니다. 트와이스의 나연이나 아이브의 원영처럼 파스텔 톤의 블루, 라벤더, 로즈 핑크 계열이 베스트이며 실버나 화이트 골드가 세련미를 더해줍니다.</p>
+                        <p><strong>가을 웜톤 (Autumn Warm):</strong> 차분하고 고혹적인 구릿빛이나 깊은 베이지 톤의 피부입니다. 블랙핑크의 제니처럼 테라코타, 머스타드, 딥 브라운 등 무거운 지구 색(Earth Tone)이 어우러질 때 가장 매력적입니다.</p>
+                        <p><strong>겨울 쿨톤 (Winter Cool):</strong> 명도가 높고 카리스마 있는 차가운 피부톤입니다. 에스파의 카리나처럼 선명한 블랙, 화이트, 딥 퍼플, 마젠타 등 강렬한 대비가 느껴지는 색상을 통해 도시적이고 세련된 이미지를 극대화할 수 있습니다.</p>
+                    </div>
+                </div>
+
+                <div className="bg-bg-card border border-glass-border rounded-2xl p-8">
+                    <h3 className="text-xl font-bold text-accent-pink mb-4">자주 묻는 질문 (FAQ)</h3>
+                    <div className="space-y-4 text-sm text-text-secondary">
+                        <details className="group cursor-pointer">
+                            <summary className="font-bold text-text-primary list-none flex justify-between">
+                                Q1. 제 사진은 안전하게 보호되나요?
+                                <span className="group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <p className="mt-2 text-xs">A1. 네, 본 서비스는 보안을 최우선으로 합니다. 입력된 이미지는 분석 즉시 서버에서 삭제되며, 어떤 용도로도 저장되거나 재사용되지 않습니다.</p>
+                        </details>
+                        <details className="group cursor-pointer">
+                            <summary className="font-bold text-text-primary list-none flex justify-between">
+                                Q2. 결과가 얼마나 정확한가요?
+                                <span className="group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <p className="mt-2 text-xs">A2. AI 기술을 통한 유사도 측정은 수치적으로 매우 정밀하지만, 조명이나 촬영 각도에 따라 결과가 달라질 수 있습니다. 여러 장의 사진으로 테스트해보는 것을 권장합니다.</p>
+                        </details>
+                        <details className="group cursor-pointer">
+                            <summary className="font-bold text-text-primary list-none flex justify-between">
+                                Q3. 아이돌 데이터는 언제 업데이트되나요?
+                                <span className="group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <p className="mt-2 text-xs">A3. 우리는 정기적으로 최신 데뷔한 신인 그룹부터 전 세대를 아우르는 아이돌 리스트를 업데이트하고 있습니다. 최신 트렌드를 반영한 결과를 제공합니다.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <div className="bg-glass/30 border-l-4 border-accent-purple p-8 rounded-r-2xl">
+                <h3 className="text-lg font-bold text-white mb-4 italic">Editor's Note: K-POP과 뷰티 시너지</h3>
+                <p className="text-sm text-text-secondary leading-loose">
+                    K-POP은 이제 단순한 음악 장르를 넘어 하나의 라이프스타일이자 뷰티 아이콘으로 자리 잡았습니다. 아이돌들이 선보이는 퍼스널 컬러 메이크업과 얼굴형에 따른 헤어 스타일링은 전 세계 수많은 팬에게 영감을 줍니다. 본 서비스를 통해 자신의 숨겨진 매력을 발견하고, 자신만의 '아이돌 지수'를 높여보세요. 당신의 고유한 아름다움은 어떤 조명 아래에서도 빛날 가치가 있습니다. 우리는 기술을 통해 당신의 그 특별함을 증명하고자 합니다.
+                </p>
+                <p className="text-sm text-text-secondary leading-loose mt-4">
+                    인공지능이 제안하는 스타일 가이드는 당신의 패션과 뷰티 선택에 있어 훌륭한 나침반이 될 것입니다. 지금 바로 무료로 테스트를 시작하고, 친구들과 결과를 공유하여 당신의 '아이돌 닮은꼴'이 누구인지 확인해보세요!
+                </p>
+            </div>
+        </section>
+    );
+}

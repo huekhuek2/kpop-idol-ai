@@ -7,7 +7,7 @@ import { Button } from '@/components/ui-components';
 import { FileUpload } from '@/components/FileUpload';
 import { ResultCard } from '@/components/ResultCard';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
-import { KBeautyGuide, InsightsSection } from '@/components/StaticContent';
+import { KBeautyGuide, InsightsSection, DetailedSEOContent } from '@/components/StaticContent';
 import { Sparkles, Camera } from 'lucide-react';
 
 type Lang = keyof typeof TRANSLATIONS;
@@ -147,6 +147,11 @@ export default function Home() {
                             {t.analyzeBtn}
                         </Button>
                     </div>
+                )}
+
+                {/* Detailed SEO Content for AdSense */}
+                {!result && !loading && (
+                    <DetailedSEOContent lang={lang} />
                 )}
 
                 {/* Loading State */}
