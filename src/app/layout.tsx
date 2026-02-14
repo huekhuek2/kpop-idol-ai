@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 // import { Outfit, Noto_Sans_KR, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
@@ -16,7 +16,12 @@ const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], weight: ["300", "400", "50
 export const metadata: Metadata = {
     title: "K-POP Idol AI - Personal Color & Lookalike",
     description: "AI-powered personal color diagnosis and K-POP idol lookalike matching.",
-    viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+};
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
 };
 
 export default function RootLayout({
