@@ -1,0 +1,21 @@
+
+> kpop-idol-ai-next@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.0
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/components/ResultCard.tsx:26:61
+Type error: Object literal may only specify known properties, but 'backgroundColor' does not exist in type 'Html2CanvasOptions'. Did you mean to write 'background'?
+
+[0m [90m 24 |[39m         [36mif[39m (element) {[0m
+[0m [90m 25 |[39m             [36mtry[39m {[0m
+[0m[31m[1m>[22m[39m[90m 26 |[39m                 [36mconst[39m canvas [33m=[39m [36mawait[39m html2canvas(element[33m,[39m { backgroundColor[33m:[39m [32m'#12121a'[39m[33m,[39m scale[33m:[39m [35m2[39m[33m,[39m useCORS[33m:[39m [36mtrue[39m })[33m;[39m[0m
+[0m [90m    |[39m                                                             [31m[1m^[22m[39m[0m
+[0m [90m 27 |[39m                 [36mconst[39m link [33m=[39m document[33m.[39mcreateElement([32m'a'[39m)[33m;[39m[0m
+[0m [90m 28 |[39m                 link[33m.[39mdownload [33m=[39m [32m'kpop-idol-result.png'[39m[33m;[39m[0m
+[0m [90m 29 |[39m                 link[33m.[39mhref [33m=[39m canvas[33m.[39mtoDataURL([32m'image/png'[39m)[33m;[39m[0m
