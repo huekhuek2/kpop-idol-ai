@@ -110,10 +110,13 @@ export function DetailedSEOContent({ lang }: { lang: string }) {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-bg-card border border-glass-border rounded-2xl p-8">
-                    <h3 className="text-xl font-bold text-accent-cyan mb-4">퍼스널 컬러별 특징 및 스타일링</h3>
-                    <div className="space-y-4 text-sm text-text-secondary leading-relaxed">
+            <div className="space-y-8">
+                <div className="bg-bg-card border border-glass-border rounded-2xl p-8 shadow-sm">
+                    <h3 className="text-xl font-bold text-accent-cyan mb-6 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-accent-cyan shadow-neon-glow"></span>
+                        퍼스널 컬러별 특징 및 스타일링
+                    </h3>
+                    <div className="space-y-6 text-sm text-text-secondary leading-relaxed">
                         <p><strong>봄 웜톤 (Spring Warm):</strong> 화사하고 생기 넘치는 노란색 베이스의 피부톤이 특징입니다. 아이유나 수지처럼 선명하고 밝은 코랄, 복숭아 빛이 잘 어울리며 골드 액세서리로 포인트를 주면 얼굴의 혈색이 더욱 살아납니다.</p>
                         <p><strong>여름 쿨톤 (Summer Cool):</strong> 맑고 깨끗하며 핑크빛이 도는 피부톤입니다. 트와이스의 나연이나 아이브의 원영처럼 파스텔 톤의 블루, 라벤더, 로즈 핑크 계열이 베스트이며 실버나 화이트 골드가 세련미를 더해줍니다.</p>
                         <p><strong>가을 웜톤 (Autumn Warm):</strong> 차분하고 고혹적인 구릿빛이나 깊은 베이지 톤의 피부입니다. 블랙핑크의 제니처럼 테라코타, 머스타드, 딥 브라운 등 무거운 지구 색(Earth Tone)이 어우러질 때 가장 매력적입니다.</p>
@@ -121,29 +124,32 @@ export function DetailedSEOContent({ lang }: { lang: string }) {
                     </div>
                 </div>
 
-                <div className="bg-bg-card border border-glass-border rounded-2xl p-8">
-                    <h3 className="text-xl font-bold text-accent-pink mb-4">자주 묻는 질문 (FAQ)</h3>
+                <div className="bg-bg-card border border-glass-border rounded-2xl p-8 shadow-sm">
+                    <h3 className="text-xl font-bold text-accent-pink mb-6 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-accent-pink shadow-neon-glow"></span>
+                        자주 묻는 질문 (FAQ)
+                    </h3>
                     <div className="space-y-4 text-sm text-text-secondary">
-                        <details className="group cursor-pointer">
-                            <summary className="font-bold text-text-primary list-none flex justify-between">
+                        <details className="group cursor-pointer border-b border-glass-border pb-4 last:border-0 last:pb-0">
+                            <summary className="font-bold text-text-primary list-none flex justify-between items-center">
                                 Q1. 제 사진은 안전하게 보호되나요?
-                                <span className="group-open:rotate-180 transition-transform">▼</span>
+                                <span className="text-accent-pink group-open:rotate-180 transition-transform text-xs">▲</span>
                             </summary>
-                            <p className="mt-2 text-xs">A1. 네, 본 서비스는 보안을 최우선으로 합니다. 입력된 이미지는 분석 즉시 서버에서 삭제되며, 어떤 용도로도 저장되거나 재사용되지 않습니다.</p>
+                            <p className="mt-3 text-xs leading-relaxed opacity-80">A1. 네, 본 서비스는 보안을 최우선으로 합니다. 입력된 이미지는 분석 즉시 서버에서 삭제되며, 어떤 용도로도 저장되거나 재사용되지 않습니다.</p>
                         </details>
-                        <details className="group cursor-pointer">
-                            <summary className="font-bold text-text-primary list-none flex justify-between">
+                        <details className="group cursor-pointer border-b border-glass-border pb-4 last:border-0 last:pb-0">
+                            <summary className="font-bold text-text-primary list-none flex justify-between items-center">
                                 Q2. 결과가 얼마나 정확한가요?
-                                <span className="group-open:rotate-180 transition-transform">▼</span>
+                                <span className="text-accent-pink group-open:rotate-180 transition-transform text-xs">▲</span>
                             </summary>
-                            <p className="mt-2 text-xs">A2. AI 기술을 통한 유사도 측정은 수치적으로 매우 정밀하지만, 조명이나 촬영 각도에 따라 결과가 달라질 수 있습니다. 여러 장의 사진으로 테스트해보는 것을 권장합니다.</p>
+                            <p className="mt-3 text-xs leading-relaxed opacity-80">A2. AI 기술을 통한 유사도 측정은 수치적으로 매우 정밀하지만, 조명이나 촬영 각도에 따라 결과가 달라질 수 있습니다. 여러 장의 사진으로 테스트해보는 것을 권장합니다.</p>
                         </details>
-                        <details className="group cursor-pointer">
-                            <summary className="font-bold text-text-primary list-none flex justify-between">
+                        <details className="group cursor-pointer border-b border-glass-border pb-4 last:border-0 last:pb-0">
+                            <summary className="font-bold text-text-primary list-none flex justify-between items-center">
                                 Q3. 아이돌 데이터는 언제 업데이트되나요?
-                                <span className="group-open:rotate-180 transition-transform">▼</span>
+                                <span className="text-accent-pink group-open:rotate-180 transition-transform text-xs">▲</span>
                             </summary>
-                            <p className="mt-2 text-xs">A3. 우리는 정기적으로 최신 데뷔한 신인 그룹부터 전 세대를 아우르는 아이돌 리스트를 업데이트하고 있습니다. 최신 트렌드를 반영한 결과를 제공합니다.</p>
+                            <p className="mt-3 text-xs leading-relaxed opacity-80">A3. 우리는 정기적으로 최신 데뷔한 신인 그룹부터 전 세대를 아우르는 아이돌 리스트를 업데이트하고 있습니다. 최신 트렌드를 반영한 결과를 제공합니다.</p>
                         </details>
                     </div>
                 </div>
